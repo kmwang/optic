@@ -52,4 +52,6 @@ new([Path | Paths]) when is_list(Path); is_binary(Path) ->
 new([Path | Paths]) when is_integer(Path), Path > 0 ->
     [optic_generic:index(Path) | new(Paths)];
 new(['*' | Paths]) ->
-    [optic_lists:all() | new(Paths)].
+    [optic_lists:all() | new(Paths)];
+new([Path | Paths]) when is_atom(Path) ->
+    [optic_generic:key(Path) | new(Paths)].

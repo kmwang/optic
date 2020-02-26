@@ -25,4 +25,7 @@ new_test_() ->
                    optic:get(optic_path:new(['*']), [1, 2, 3])),
      ?_assertEqual({ok, [value]},
                    optic:get(optic_path:new(["key", 1, "nested"]),
-                             #{"key"=>[#{"nested"=>value}]}))].
+                             #{"key"=>[#{"nested"=>value}]})),
+     ?_assertEqual({ok, [value]},
+                   optic:get(optic_path:new([key, 1, nested]),
+                             #{key=>[#{nested=>value}]}))].
